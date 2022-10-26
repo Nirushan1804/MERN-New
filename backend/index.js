@@ -1,14 +1,21 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
 const mongoose = require('mongoose');
-const FriendModel = require("./models/Friends")
+const FriendModel = require("./models/Friends");
+
+app.use(cors());
+app.use(express.json());
 
 //database connection
 mongoose.connect("mongodb://localhost:27017/mern-new",
 {useNewUrlParser: true});
 
-app.get("/insert", async (req, res) => {
-    const friend = new FriendModel({name:"John", age:25});
+app.post("/create", async (req, res) => {
+    const name = req.body.name
+    const age = req.body.age
+
+    const friend = new FriendModel({name:name, age:age});
     await friend.save();
     res.send("inserted data");
 });

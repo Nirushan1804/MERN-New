@@ -2,6 +2,7 @@
   display: flex;
   justify-content: center;
   height: 100vh;
+  flex-direction: column;
 }
 
 body{
@@ -16,7 +17,7 @@ body{
   justify-content: center;
   align-items: center;
   flex-direction: column; 
-  background-color: #93fe83;
+  background-color: #83f0fe;
 }
 
 .inputs input{
@@ -25,4 +26,18 @@ body{
   font-size: 18px;
   margin: 10px;
   padding-left: 10px;
+}
+
+.inputs button{
+  border:none;
+  width: 150px;
+  height: 50px;
+  background-color: #08076e;
+  color: white;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+.inputs button:hover{
+  cursor: pointer;
 }
