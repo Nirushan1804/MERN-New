@@ -9,7 +9,10 @@ function App() {
   const [listOfFriends, setListOfFriends] = useState([]);
 
   const addFriend = () => {
-    Axios.post("http://localhost:3001/create", {name:name, age:age})};
+    Axios.post("http://localhost:3001/create", {name:name, age:age})
+    .then(()=>{
+      setListOfFriends([...listOfFriends, {name: name, age: age}]);
+    })};
 
   useEffect(()=>{
     Axios.get("http://localhost:3001/read")
@@ -27,9 +30,20 @@ function App() {
         <input type = "number" placeholder='Friend Age...' onChange={(event) => {setAge(event.target.value)}}/>
         <button onClick={addFriend}>Add Friend</button>
       </div>
+      <div className='listOfFriends'>
       {listOfFriends.map((val)=>{
-        return <div>{val.name} {val.age}</div>
+        return (
+        <div className='friendContainer'>
+         <div className='friend'>
+         <h3> Name: {val.name} </h3>
+         <h3> Age: {val.age}  </h3>
+         </div>
+        <button>Update</button>
+        <button>Delete</button>
+        </div>
+        );
       })}
+      </div>
     </div>
   );
 }

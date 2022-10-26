@@ -41,3 +41,43 @@ body{
 .inputs button:hover{
   cursor: pointer;
 }
+
+.listOfFriends{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.friendContainer{
+  display:flex;
+  flex-direction: row;
+  margin: 10px;
+}
+
+.friend{
+  width: 600px;
+  height: 60px;
+  background-color: #08076e;
+  color: white;
+  font-family: 'Courier New', Courier, monospace;
+  display: flex;
+  margin: 10px;
+}
+
+.friend h3{
+  margin-left: 15px;
+}
+
+.friendContainer button{
+  width: 80px;
+  height: 60px;
+  margin-top: 10px;
+  margin-left: 10px;
+  border: 2px solid black;
+}
+
+.friendContainer button:hover{
+  cursor: pointer;
+}
