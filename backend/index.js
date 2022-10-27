@@ -30,6 +30,21 @@ app.get("/read", async (req, res) => {
     });
 });
 
+app.put("/update", async (req, res) => {
+    const newAge = req.body.newAge
+    const id = req.body.id
+
+    try{
+        await FriendModel.findById(id, (error, friendToUpdate) => {
+            friendToUpdate.age = Number(newAge);
+            friendToUpdate.save();
+        });
+        } catch(err){
+        console.log(err);
+    }
+    res.send("updated");
+});
+
 
 app.listen(3001,()=>{
     console.log("app running on port 3001");

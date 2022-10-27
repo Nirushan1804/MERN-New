@@ -14,6 +14,18 @@ function App() {
       setListOfFriends([...listOfFriends, {name: name, age: age}]);
     })};
 
+  const updateFriend = (id) => {
+    const newAge = prompt("Enter new age: ");
+    Axios.put("http://localhost:3001/update", {
+      newAge: newAge,
+      id: id
+    }).then(()=>{
+      setListOfFriends(listOfFriends.map((val)=>{
+        return val._id == id ? {_id: id, name: val.name, age: newAge} : val;
+      }))
+    })
+  };
+
   useEffect(()=>{
     Axios.get("http://localhost:3001/read")
     .then((response)=>{
@@ -38,7 +50,7 @@ function App() {
          <h3> Name: {val.name} </h3>
          <h3> Age: {val.age}  </h3>
          </div>
-        <button>Update</button>
+        <button onClick={()=>{updateFriend(val._id)}}>Update</button>
         <button>Delete</button>
         </div>
         );
