@@ -17,7 +17,7 @@ app.post("/create", async (req, res) => {
 
     const friend = new FriendModel({name:name, age:age});
     await friend.save();
-    res.send("inserted data");
+    res.send(friend);
 });
 
 app.get("/read", async (req, res) => {
@@ -44,6 +44,12 @@ app.put("/update", async (req, res) => {
     }
     res.send("updated");
 });
+
+app.delete("/delete/:id", async (req,res) => {
+    const id = req.params.id
+    await FriendModel.findByIdAndRemove(id).exec()
+    res.send("item deleted");
+})
 
 
 app.listen(3001,()=>{
